@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import ToDo from "./Components/ToDo";
 import SingleTask from "./Components/singleTask/SingleTask";
+import Contact from "./Components/Contact/Contact";
 import Navbar from "./Components/Navbar/Navbar";
 // import A from "./functionalComponents/A";
 import { ToastContainer, toast, TypeOptions } from "react-toastify";
@@ -35,14 +36,7 @@ const App = () => {
               element={<ToDo addNotification={addNotification} />}
             />
             <Route path="/singleTask/:id" element={<SingleTask />} />
-            <Route
-              path="/contact"
-              element={
-                <button onClick={() => navigate("/", { state: { a: 5 } })}>
-                  Contact us
-                </button>
-              }
-            />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
           <ToastContainer
             position="bottom-right"

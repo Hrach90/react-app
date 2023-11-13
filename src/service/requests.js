@@ -27,7 +27,6 @@ export const getTaskRequest = async (setTasks) => {
   const response = await fetch(`${API_HOST}/task`);
   const tasks = await response.json();
   setTasks(tasks);
-  console.log(tasks, "tasks");
 };
 
 export const deleteTaskRequest = async (array) => {
@@ -41,3 +40,14 @@ export const deleteTaskRequest = async (array) => {
   });
   console.log(response);
 };
+
+export const sendContactForm = async (formData) => {
+  const response = await fetch(`${API_HOST}/contact`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+  console.log(response);
+}

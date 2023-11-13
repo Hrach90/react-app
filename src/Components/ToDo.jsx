@@ -3,7 +3,7 @@ import AddTask from "./AddTask/AddTask";
 import Task from "./Task/Task";
 import DeleteModal from "./deleteModal/deleteModal";
 import Styles from "./styles.module.css";
-import { idGeneretor } from "../helpers/idGeneretor";
+import Filter from "./Filter/Filter";
 import Button from "react-bootstrap/Button";
 import {
   createTaskRequest,
@@ -166,6 +166,8 @@ const ToDo = ({ addNotification }) => {
           Add Task
         </Button>
       </div>
+      <Filter tasks={tasks} setTasks={setTasks} />
+      <Button onClick={() => getTaskRequest(setTasks)}>Reset</Button>
       {isOpenAddModal && (
         <AddTask
           onHide={onHide}
@@ -188,8 +190,8 @@ const ToDo = ({ addNotification }) => {
         {tasks.map((item, index) => {
           return (
             <Task
-            tasks={tasks}
-            setTasks={setTasks}
+              tasks={tasks}
+              setTasks={setTasks}
               key={index}
               task={item}
               handleDeleteTask={handleDeleteTask}

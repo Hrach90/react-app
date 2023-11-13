@@ -49,6 +49,7 @@ const Task = (props) => {
           id="custom-switch"
           label="Check this switch"
           onChange={async (e) => {
+            console.log(e.target.checked);
             const response = await fetch(
               `http://localhost:3001/task/${task._id}`,
               {
@@ -62,11 +63,13 @@ const Task = (props) => {
               }
             );
             const data = await response.json();
-            const newTasks = tasks.map((i) => {
-              //================== homework
+            const newTasks = tasks.map((item) => {
+              if (item._id === task._id) {
+                return { ...item, status: data.status };
+              }
+              return item;
             });
-            console.log(newTasks, "newTasks");
-            // setTasks(newTasks);
+            setTasks(newTasks);
           }}
         />
       </Form>
